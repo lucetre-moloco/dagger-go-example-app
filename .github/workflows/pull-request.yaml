@@ -42,20 +42,9 @@ jobs:
         uses: dagger/dagger-for-github@v5
         with:
           verb: run
-          dagger-flags: '--progress plain'
+          dagger-flags: '--progress tty'
           args: go run ci/dagger.go pull-request
           version: "0.12.2"
-          
-      - name: Run Dagger Pull Request using Dagger CLI
-        continue-on-error: true
-        uses: dagger/dagger-for-github@v5
-        with:
-          verb: run
-          dagger-flags: '-w'
-          args: go run ci/dagger.go pull-request
-          version: "0.12.2"
-        env: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Dagger Pull Request using Golang
         env: 
