@@ -27,9 +27,31 @@ jobs:
           cache: true
 
       - name: Run Dagger Pull Request using Dagger CLI
+        continue-on-error: true
         uses: dagger/dagger-for-github@v5
         with:
           verb: run
+          dagger-flag: '--progress plain'
+          args: go run ci/dagger.go pull-request
+          version: "0.12.2"
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Dagger Pull Request using Dagger CLI
+        continue-on-error: true
+        uses: dagger/dagger-for-github@v5
+        with:
+          verb: run
+          dagger-flag: '--progress plain'
+          args: go run ci/dagger.go pull-request
+          version: "0.12.2"
+          
+      - name: Run Dagger Pull Request using Dagger CLI
+        continue-on-error: true
+        uses: dagger/dagger-for-github@v5
+        with:
+          verb: run
+          dagger-flag: '-w'
           args: go run ci/dagger.go pull-request
           version: "0.12.2"
         env: 
