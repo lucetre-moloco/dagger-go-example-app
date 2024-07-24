@@ -25,7 +25,16 @@ jobs:
           go-version: "1.20.2"
           cache: true
 
-      - name: Run Dagger Release
+      - name: Run Dagger Release using Dagger CLI
+        uses: dagger/dagger-for-github@v5
+        with:
+          verb: run
+          args: go run ci/dagger.go release
+          version: "0.12.2"
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Dagger Release using Golang
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: go run ci/dagger.go release
