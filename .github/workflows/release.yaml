@@ -31,7 +31,7 @@ jobs:
         with:
           verb: run
           args: go run ci/dagger.go release
-          version: "0.12.2"
+          version: "0.6.0"
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
