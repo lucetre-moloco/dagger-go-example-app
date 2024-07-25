@@ -27,9 +27,10 @@ jobs:
 
       - name: Run Dagger Release using Dagger CLI
         continue-on-error: true
-        uses: dagger/dagger-for-github@v4
+        uses: dagger/dagger-for-github@v5
         with:
           verb: run
+          dagger-flags: ""
           args: go run ci/dagger.go release
           version: "0.6.0"
         env: 
